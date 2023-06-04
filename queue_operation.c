@@ -5,7 +5,7 @@
 int queue[MAX];
 int rear = -1;
 int front = -1;
-void enqueue(int data);
+
 int dequeue();
 int peek();
 void display();
