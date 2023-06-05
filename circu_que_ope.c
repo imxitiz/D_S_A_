@@ -5,9 +5,10 @@
 int queue[MAX];
 int rear=-1;
 int front=-1;
+
 void enqueue(int data);
-int dequeue();
-int peek();
+void dequeue();
+void peek();
 void display();
 int isFull();
 int isEmpty();
@@ -65,14 +66,15 @@ void enqueue(int data)
                 queue[rear]=data ;
         }
 }
-int dequeue()
+void dequeue()
 {
-        int item;
+        
         if( isEmpty() )
         {
                 printf("\nQueue Underflow\n");
         }
-        item=queue[front];
+        else{
+        int item = queue[front];
         if(front == rear ){
                 
                 front = -1;
@@ -81,23 +83,19 @@ int dequeue()
         else{
                 
                 front = (front + 1) % MAX;
-
-
         }
         printf("\ndequeued element is  %d\n",item);
-
+        }
 }
 
-int peek()
+void peek()
 {
         if( isEmpty() )
         {
                 printf("\nQueue Underflow\n");
         }
         else{
-
-        printf("\nElement at the front is %d\n",queue[front]);
-        
+                printf("\nElement at the front is %d\n",queue[front]);
         }
 }
 
@@ -122,13 +120,13 @@ void display()
         else{
                 printf("\nQueue is :\n\n");
                 
-                for(i=front;i<=rear;i++)
+                for(i=front;i != rear;i = (i + 1) % MAX)
                 {
-                i = (i + 1) % MAX;    
+                   
                 printf("%d  ",queue[i]);
 
                 }
-                printf("\n\n");
+                printf("%d\n\n", queue[i]);
 
         }   
         
